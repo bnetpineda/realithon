@@ -21,17 +21,22 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
 app.get("/realithon", (req, res) => {
   res.send("Welcome to Realithon");
 });
 
 app.post("/register", async (req, res) => {
   const username = req.body.username;
-  const email = req.body.email;
   const password = req.body.password;
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (username == "" || email == "" || password == "") {
+  if (username == "" || password == "") {
     return res.status(400).send("Please fill all fields.");
   }
 
@@ -41,20 +46,16 @@ app.post("/register", async (req, res) => {
   if (password.length < 8) {
     return res.status(400).send("Password needs 8 or more characters.");
   }
-  if (!emailRegex.test(email)) {
-    return res.status(400).send("Invalid email format.");
-  }
-
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     db.query(
-      "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-      [username, email, hashedPassword],
+      "INSERT INTO users (username, password) VALUES (?, ?)",
+      [username, hashedPassword],
       (err, result) => {
         if (err) {
           return res.status(500).send("User registration failed.");
         }
-        res.redirect("localhost:3000/realithon");
+        res.redirect('/');
       }
     );
   } catch (error) {
