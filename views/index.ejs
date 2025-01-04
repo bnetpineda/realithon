@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game UI</title>
-  <link href="css/styles.css" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title || "Dashboard" %></title>
+  <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="overflow-hidden">
-  <div class="h-screen w-screen bg-gray-900 flex flex-col justify-between">
-    <div class="flex-grow"></div>
+  <div class="h-screen w-screen flex flex-col justify-between">
+    <!-- Dynamic Content -->
+    <main class="flex-grow">
+      <%- body %>
+    </main>
 
-    <div class="bg-gray-800 h-20 flex justify-around items-center border-t border-gray-700">
-      <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Button 1</button>
-      <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Button 2</button>
-      <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Button 3</button>
-      <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Button 4</button>
-    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="bg-gray-800 h-20 flex justify-around items-center border-t border-gray-700">
+        <button href="/adventure" class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Adventure</button>
+        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Market</button>
+        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">????</button>
+        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Settings</button>
+      </div>
+    </footer>
   </div>
-</body>
+</body> 
 </html>

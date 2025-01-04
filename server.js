@@ -18,7 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    title: "Adventure",
+    body: "adventure"
+  });
 });
 
 app.get("/login", (req, res) => {
