@@ -32,6 +32,34 @@ app.get("/realithon", (req, res) => {
   res.send("Welcome to Realithon");
 });
 
+app.post("/login", async (req, res) =>{
+  const username = req.body.username;
+  const password = req.body.password;
+  
+ if (!username || !password) {
+    return res.status(400).send("Please provide a username and password.");
+  }
+
+  db.query("SELECT * FROM users WHERE username = ?", [username], async (err, results) => {
+    if (err) {
+      return res.status(500).send("Error checking user credentials.");
+    }
+
+    if (results.length === 0) {
+      return res.status(401).send("Invalid username or password.");
+
+    }
+
+    const user = results[0];
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).send("Invalid username or password.");
+    }
+    res.redirect('/');
+  });
+});
+
 app.post("/register", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -46,6 +74,7 @@ app.post("/register", async (req, res) => {
   if (password.length < 8) {
     return res.status(400).send("Password needs 8 or more characters.");
   }
+  
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     db.query(
@@ -61,4 +90,5 @@ app.post("/register", async (req, res) => {
   } catch (error) {
     res.status(500).send("Error during registration.");
   }
+
 });
