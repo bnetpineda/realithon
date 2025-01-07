@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= title || "Dashboard" %></title>
-  <link href="/css/styles.css" rel="stylesheet">
-</head>
-<body class="overflow-hidden">
-  <div class="h-screen w-screen flex flex-col justify-between">
-    <!-- Dynamic Content -->
-    <main class="flex-grow">
-      <%- body %>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="bg-gray-800 h-20 flex justify-around items-center border-t border-gray-700">
-        <button href="/adventure" class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Adventure</button>
-        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Market</button>
-        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">????</button>
-        <button class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4">Settings</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title || "Dashboard" %></title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <script>
+    $("document").ready(function () {
+      // $("#menu").hide();
+      $("#showmenu").click(function () {
+        $("#menu").toggle();
+      });
+    });
+  </script>
+  <body class="overflow-hidden">
+    <div class="min-h-screen relative bg-gray-900">
+      <div id="adventure" class="bg-gray-500 p-4 text-white rounded-md">
+        Hello
       </div>
-    </footer>
-  </div>
-</body> 
+        <button
+          id="showmenu"
+          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg"
+        >
+          Show Menu
+        </button>
+      </main>
+
+      <footer id="menu" class="absolute bottom-0 w-1/1 h-10 border-gray-700">
+        <div
+          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg"
+        >
+          <button
+            href="/adventure"
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg"
+          >
+            Adventure
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            Market
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            ????
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            Settings
+          </button>
+      </footer>
+    </div>
+  </body>
 </html>
