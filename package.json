@@ -9,11 +9,13 @@
     "mysql2": "^3.12.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "npm-run-all --parallel dev tailwind",
+    "dev": "nodemon server.js",
+    "tailwind": "npx tailwindcss -i ./src/styles.css -o ./public/css/styles.css --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
   }
