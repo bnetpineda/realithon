@@ -1,68 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title || "Dashboard" %></title>
-    <link href="/css/styles.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <script>
-    $("document").ready(function () {
-      // $("#menu").hide();
-      $("#showmenu").click(function () {
-        $("#menu").toggle();
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title><%= title || "Dashboard" %></title>
+      <link href="/css/styles.css" rel="stylesheet" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <script>
+      $("document").ready(function () {
+        $("#showmenu").click(function () {
+          $("#menu").toggle();
+        });
+        $("#exit-button, #adventure-button").click(function () {
+          $("#display-adventure").toggle();
+        });
       });
-    });
-  </script>
-  <body class="m-0 flex flex-col min-h-screen">
-    <!-- Screen -->
-    <main class="flex-1 justify-center bg-lightGray flex items-center">
-      <!-- Display Adventure -->
-      <div class="flex flex-col items-start p-1 gap-1 isolate relative w-[481px] h-[368px] bg-[#C0C0C0] shadow-[inset_-1px_-1px_0px_#000000,inset_1px_1px_0px_#C1C1C1,inset_-2px_-2px_0px_#818181,inset_2px_2px_0px_#FFFFFF]">
-        <div class="bg-semantic-backgroud-navy self-stretch shrink-0 h-[18px] relative">
-          <div
-            class="flex flex-row gap-[3px] items-center justify-start absolute left-0.5 bottom-px top-px"
-          >
-            <img
-              class="shrink-0 w-4 h-4 relative overflow-visible"
-              src="icon-small-pdf0.svg"
-            />
+    </script>
+    <body class="m-0 flex flex-col min-h-screen">
+      <!-- Screen -->
+      <main class="flex-1 justify-center bg-lightGray flex items-center">
+        <!-- Display Adventure -->
+        <div id="display-adventure" 
+        class="flex flex-col items-start p-1 gap-1 isolate relative w-[481px] h-[368px] bg-[#C0C0C0] shadow-[inset_-1px_-1px_0px_#000000,inset_1px_1px_0px_#C1C1C1,inset_-2px_-2px_0px_#818181,inset_2px_2px_0px_#FFFFFF]">
+          <div class="bg-semantic-backgroud-navy self-stretch shrink-0 h-[18px] relative">
             <div
-              class="text-semantic-text-inverse text-left font-title-font-family text-title-font-size leading-title-line-height font-title-font-weight relative"
-              style="letter-spacing: var(--title-letter-spacing, 0.22px)"
+              class="flex flex-row gap-[3px] items-center justify-start absolute left-0.5 bottom-px top-px"
             >
-              WordPad
-            </div>
-          </div>
-          <div
-            class="p-0.5 flex flex-row gap-0.5 items-center justify-center absolute right-0 top-[50%]"
-            style="translate: 0 -50%"
-          >
-            <div
-              class="flex flex-row gap-0 items-start justify-start shrink-0 relative"
-            >
+              <img
+                class="shrink-0 w-4 h-4 relative overflow-visible"
+                src="images/adventure.png"
+              />
               <div
-                class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative"
-                style="
-                  box-shadow: var(
-                    --outside-3-box-shadow,
-                    inset -2px -2px 0px 0px rgba(129, 129, 129, 1),
-                    inset 1px 1px 0px 0px rgba(255, 255, 255, 1),
-                    inset -1px -1px 0px 0px rgba(0, 0, 0, 1)
-                  );
-                "
+                class="text-semantic-text-inverse text-left font-title-font-family text-title-font-size leading-title-line-height font-title-font-weight relative"
+                style="letter-spacing: var(--title-letter-spacing, 0.22px)"
               >
-                <div
-                  class="w-[13px] h-[11px] absolute left-[50%] top-[50%]"
-                  style="translate: -50% -50%"
-                >
-                  <div
-                    class="bg-[#000000] w-[46.15%] h-[18.18%] absolute right-[30.77%] left-[23.08%] bottom-[9.09%] top-[72.73%]"
-                  ></div>
-                </div>
+                Adventure
               </div>
+            </div>
+            <div
+              class="p-0.5 flex flex-row gap-0.5 items-center justify-center absolute right-0 top-[50%]"
+              style="translate: 0 -50%"
+            >
               <div
+                class="flex flex-row gap-0 items-start justify-start shrink-0 relative"
+              >
+                <button
+                  class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative"
+                  style="
+                    box-shadow: var(
+                      --outside-3-box-shadow,
+                      inset -2px -2px 0px 0px rgba(129, 129, 129, 1),
+                      inset 1px 1px 0px 0px rgba(255, 255, 255, 1),
+                      inset -1px -1px 0px 0px rgba(0, 0, 0, 1)
+                    );
+                  "
+                >
+                  <img
+                    class="w-[10px] h-[9px] absolute left-[50%] top-[50%] overflow-visible"
+                    style="translate: -50% -50%"
+                    src="images/maximize-button.png"
+                  />
+                </button>
+              </div>
+              <button
+                id="exit-button"
                 class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative"
                 style="
                   box-shadow: var(
@@ -74,61 +76,49 @@
                 "
               >
                 <img
-                  class="w-[13px] h-[11px] absolute left-[50%] top-[50%] overflow-visible"
+                  class="w-[9px] h-[8px] absolute left-[50%] top-[50%] overflow-visible"
                   style="translate: -50% -50%"
-                  src="icon-header-maximize0.svg"
+                  src="images/exit-button.png"
                 />
-              </div>
-            </div>
-            <div
-              class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative"
-              style="
-                box-shadow: var(
-                  --outside-3-box-shadow,
-                  inset -2px -2px 0px 0px rgba(129, 129, 129, 1),
-                  inset 1px 1px 0px 0px rgba(255, 255, 255, 1),
-                  inset -1px -1px 0px 0px rgba(0, 0, 0, 1)
-                );
-              "
-            >
-              <img
-                class="w-[13px] h-[11px] absolute left-[50%] top-[50%] overflow-visible"
-                style="translate: -50% -50%"
-                src="icon-header-close0.svg"
-              />
+              </button>
             </div>
           </div>
-        </div>
-           
-      </div>        
+            <!-- Inside Content-->
+          <div id="select-class">
+            
+          </div>
 
-    </main>
-    <footer
-      id="menu"
-      class="absolute bottom-0 w-full h-10 border-gray-700 "
-    >
-        <button
-          href="/adventure"
-          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg"
-        >
-          Adventure
-        </button>
-        <button
-          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
-        >
-          Market
-        </button>
-        <button
-          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
-        >
-          ????
-        </button>
-        <button
-          class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
-        >
-          Settings
-        </button>
-      </div>
-    </footer>
-  </body>
-</html>
+
+
+        </div>        
+
+      </main>
+      <footer
+        id="menu"
+        class="absolute bottom-0 w-full h-10 border-gray-700 "
+      >
+          <button
+            id="adventure-button"
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg"
+          >
+            Adventure
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            Market
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            ????
+          </button>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
+          >
+            Settings
+          </button>
+        </div>
+      </footer>
+    </body>
+  </html>
