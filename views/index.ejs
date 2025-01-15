@@ -9,18 +9,28 @@
     </head>
     <script>
       $("document").ready(function () {
+        $("#display-main").children().hide()
         $("#showmenu").click(function () {
           $("#menu").toggle();
         });
-        $("#exit-button, #adventure-button").click(function () {
-          $("#display-adventure").toggle();
+        $("#exit-button-adventure, #adventure-button").click(function () {
+          $("#display-main").children().hide()
+          $("#display-adventure").show()
+        });
+        $("#exit-button-market, #market-button").click(function () {
+          $("#display-main").children().hide()
+          $("#display-market").show()
+        });
+        $("#exit-button-setting, #setting-button").click(function () {
+          $("#display-main").children().hide()
+          $("#display-setting").show()
         });
 
       });
     </script>
     <body class="m-0 flex flex-col min-h-screen">
       <!-- Screen -->
-      <main class="flex-1 justify-center bg-lightGray flex items-center">
+      <main class="flex-1 justify-center bg-lightGray flex items-center" id="display-main">
         <!-- Display Adventure -->
         <div id="display-adventure" 
         class="flex flex-col items-start p-1 gap-1 isolate relative w-[481px] h-[368px] bg-[#C0C0C0] shadow-outside-full">
@@ -57,9 +67,8 @@
                 </button>
               </div>
               <button
-                id="exit-button"
+                id="exit-button-adventure"
                 class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative shadow-outside-3 hover:scale-110"
-                
               >
                 <img
                   class="w-[9px] h-[8px] absolute left-[50%] top-[50%] overflow-visible"
@@ -96,11 +105,56 @@
               Healer
             </button>
           </div>
-
-
-
         </div>        
 
+        <div id="display-market" 
+        class="flex flex-col items-start p-1 gap-1 isolate relative w-[481px] h-[368px] bg-[#C0C0C0] shadow-outside-full">
+          <div class="bg-semantic-backgroud-navy self-stretch shrink-0 h-[18px] relative">
+            <div
+              class="flex flex-row gap-[3px] items-center justify-start absolute left-0.5 bottom-px top-px"
+            >
+              <img
+                class="shrink-0 w-4 h-4 relative overflow-visible"
+                src="images/adventure.png"
+              />
+              <div
+                class="text-semantic-text-inverse text-left font-title-font-family text-title-font-size leading-title-line-height font-title-font-weight relative"
+                style="letter-spacing: var(--title-letter-spacing, 0.22px)"
+              >
+                Adventure
+              </div>
+            </div>
+            <div
+              class="p-0.5 flex flex-row gap-0.5 items-center justify-center absolute right-0 top-[50%]"
+              style="translate: 0 -50%"
+            >
+              <div
+                class="flex flex-row gap-0 items-start justify-start shrink-0 relative"
+              >
+                <button
+                  class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative shadow-outside-3 hover:scale-110"
+                >
+                  <img
+                    class="w-[10px] h-[9px] absolute left-[50%] top-[50%] overflow-visible"
+                    style="translate: -50% -50%"
+                    src="images/maximize-button.png"
+                  />
+                </button>
+              </div>
+              <button
+                id="exit-button-adventure"
+                class="bg-basic-neutral-silver shrink-0 w-4 h-3.5 relative shadow-outside-3 hover:scale-110"
+              >
+                <img
+                  class="w-[9px] h-[8px] absolute left-[50%] top-[50%] overflow-visible"
+                  style="translate: -50% -50%"
+                  src="images/exit-button.png"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        
       </main>
       <footer
         id="menu"
@@ -113,6 +167,7 @@
             Adventure
           </button>
           <button
+            id="market-button"
             class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
           >
             Market
@@ -123,6 +178,7 @@
             ????
           </button>
           <button
+            id="setting-button"
             class="bg-blue-500 hover:bg-blue-600 text-black py-2 px-4 rounded-lg w-1/4"
           >
             Settings
